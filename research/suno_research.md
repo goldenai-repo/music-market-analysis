@@ -64,7 +64,7 @@ This section summarizes Suno's product features, workflow, user experience, limi
 | Generated title | "Rain on Paper" |
 | Intended use case | Study music / relaxing background track |
 
-Suno music generation experiment
+![Suno music generation experiment](../images/suno_generation_experiment.png)
 
 Figure: Suno generated multiple variations from a lo-fi study music prompt. The first two outputs were accessible under the free plan, while the last two required an upgrade for full-song access.
 
