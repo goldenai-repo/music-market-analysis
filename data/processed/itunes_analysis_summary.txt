@@ -1,0 +1,43 @@
+iTunes Music Data Analysis Summary
+========================================
+Total tracks: 196
+Unique artists: 36
+Unique genres: 9
+Average duration: 2.28 minutes
+Median duration: 2.21 minutes
+
+Top Genres:
+genre
+Hip-Hop/Rap       155
+New Age            16
+Instrumental        7
+Electronic          6
+Easy Listening      4
+Cool Jazz           3
+Hip-Hop             2
+Downtempo           2
+Ambient             1
+
+Top Artists:
+artist_name
+Lofi Study                                                    96
+Lofi Sleep Chill & Study, Lofi Hip-Hop Beats & Lo-Fi Beats    28
+StudyWork                                                     18
+Lofi Study & Lofi Music Lounge                                13
+Eight Drip                                                     5
+Sad Music                                                      3
+LoFi Jazz Beats                                                3
+Lofi Hip-Hop Beats, Beats De Rap & Lo-Fi Beats                 2
+Lofi mood                                                      1
+LoFi Study Music                                               1
+
+Recent Release Year Distribution:
+release_year
+2019      2
+2020     28
+2021     14
+2022    113
+2023      4
+2024      4
+2025     30
+2026      1
