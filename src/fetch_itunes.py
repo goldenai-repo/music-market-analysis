@@ -14,13 +14,18 @@ def fetch_itunes_music(search_term: str = "lofi study", limit: int = 200) -> lis
         "entity": "song",
         "limit": limit,
     }
-    response = requests.get(ITUNES_API_URL, params=params, timeout=10)
+    headers = {
+        "User-Agent": "music-market-analysis/1.0"
+    }
+
+    response = requests.get(ITUNES_API_URL, params=params, headers=headers, timeout=10)
     response.raise_for_status()
     return response.json().get("results", [])
 
 
 def parse_results(results: list[dict]) -> pd.DataFrame:
     rows = []
+
     for item in results:
         rows.append({
             "track_name": item.get("trackName"),
@@ -35,14 +40,15 @@ def parse_results(results: list[dict]) -> pd.DataFrame:
             "preview_url": item.get("previewUrl"),
             "artwork_url": item.get("artworkUrl100"),
         })
+
     return pd.DataFrame(rows)
 
 
-def main(search_term: str = "lofi study"):
+def main(search_term: str = "lofi study", limit: int = 200):
     print(f"Fetching iTunes data for: '{search_term}'")
 
     try:
-        results = fetch_itunes_music(search_term)
+        results = fetch_itunes_music(search_term, limit)
     except requests.RequestException as e:
         print(f"Error fetching data: {e}")
         return
@@ -52,8 +58,10 @@ def main(search_term: str = "lofi study"):
         return
 
     df = parse_results(results)
+
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(OUTPUT_PATH, index=False)
+
     print(f"Saved {len(df)} rows to {OUTPUT_PATH}")
 
 
