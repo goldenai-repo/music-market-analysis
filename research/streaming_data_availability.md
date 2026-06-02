@@ -10,3 +10,17 @@
 ## Initial Conclusion
 
 The iTunes Search API is the most accessible option for the first data-fetching demo because it returns structured music metadata without requiring authentication. Other platforms may provide useful data, but they require API keys or authorization, so they are documented as possible future sources.
+
+## iTunes Search API Finding
+
+The iTunes Search API is useful for collecting structured music metadata, including artist, genre, release date, duration, price, preview URL, and artwork. These metadata fields are important dimensions for grouping and explaining music performance.
+
+However, iTunes does not provide direct performance metrics such as sales, stream counts, listener data, popularity scores, likes, or comments.
+
+Therefore, iTunes can be used as the metadata baseline, while additional sources are needed to collect performance and engagement metrics.
+
+## Next Steps
+- Use iTunes Search API as the metadata baseline.
+- Explore YouTube Data API for public engagement metrics (views, likes, and comments).
+- Explore Spotify Web API for track-level popularity score.
+- Compare NetEase and QQ Music as potential Chinese-market data sources.
