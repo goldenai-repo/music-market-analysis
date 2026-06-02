@@ -11,11 +11,10 @@ load_dotenv()
 YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 
-DEFAULT_QUERY = "Taylor Swift Anti-Hero official music video"
+DEFAULT_QUERY = "lofi study music"
 DEFAULT_MAX_RESULTS = 5
 
-OUTPUT_PATH = Path("data/processed/youtube_videos_sample.csv")
-
+OUTPUT_PATH = Path("data/processed/youtube_lofi_sample.csv")
 
 def get_api_key() -> str:
     api_key = os.getenv("YOUTUBE_API_KEY")
@@ -60,7 +59,7 @@ def fetch_video_details(api_key: str, video_ids: list[str]) -> list[dict]:
     return response.json().get("items", [])
 
 
-def parse_results(items: list[dict]) -> pd.DataFrame:
+def parse_results(items: list[dict], query: str) -> pd.DataFrame:
     """Parse YouTube API video results into a dataframe."""
     rows = []
 
@@ -77,6 +76,7 @@ def parse_results(items: list[dict]) -> pd.DataFrame:
 
         rows.append(
             {
+                "search_query": query,
                 "video_id": video_id,
                 "title": snippet.get("title"),
                 "channel_title": snippet.get("channelTitle"),
@@ -124,7 +124,7 @@ def main(query: str = DEFAULT_QUERY, max_results: int = DEFAULT_MAX_RESULTS) -> 
         print("No video details returned.")
         return
 
-    df = parse_results(items)
+    df = parse_results(items, query)
     save_results(df)
 
     print(f"Saved {len(df)} videos to {OUTPUT_PATH}")
