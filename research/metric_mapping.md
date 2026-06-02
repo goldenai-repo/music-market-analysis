@@ -9,11 +9,11 @@ The goal is to map which platforms can provide performance and engagement metric
 | Dimension | Metric | Possible Source | Notes |
 |---|---|---|---|
 | Sales | Sales volume | Chart ranking, third-party data | Direct sales volume is not available from iTunes Search API |
-| Popularity | Popularity score | Spotify Web API | Spotify can provide track-level popularity |
+| Popularity | Popularity score | Spotify Web API | API access tested; Search response did not include the popularity field in the current sample |
 | Play volume | Views / play count | YouTube Data API, NetEase, QQ Music | Useful for estimating listening demand |
 | Engagement | Likes / comments | YouTube Data API, NetEase, QQ Music | Useful for measuring audience response |
 | Metadata | Track, artist, genre, release date, price | iTunes Search API | Existing baseline dimensions from the iTunes dataset |
 
 ## Next Step
 
-Explore Spotify Web API to collect track-level popularity scores as the next performance metric.
+Explore YouTube Data API for public engagement metrics such as views, likes, and comments.
