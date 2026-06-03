@@ -12,7 +12,7 @@ YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 
 DEFAULT_QUERY = "lofi study music"
-DEFAULT_MAX_RESULTS = 5
+DEFAULT_MAX_RESULTS = 10
 
 OUTPUT_PATH = Path("data/processed/youtube_lofi_sample.csv")
 
