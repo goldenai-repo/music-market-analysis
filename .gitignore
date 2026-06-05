@@ -10,3 +10,4 @@ data/processed/*
 !data/processed/.gitkeep
 .DS_Store
 claude/
+.claude/
