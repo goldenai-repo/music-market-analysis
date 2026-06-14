@@ -13,7 +13,7 @@
 
 本汇报不做“哪个国家最值得优先投”的排序，只总结每个国家目前整理出的数据证据和初步风格方向。
 
-## 3. 四国一句话结论
+## 2. 四国一句话结论
 
 | 国家 | 一句话结论 |
 | --- | --- |
@@ -22,7 +22,7 @@
 | Turkey | 优先测试 Turkish pop / alt-pop，并用 Turkish melodic hip-hop / pop-rap 和 Turkish dance-pop / electronic 作为对照测试方向。 |
 | Vietnam | 优先测试 Vietnamese pop / alt-pop，并用 Vietnamese melodic hip-hop / pop-rap 和 Vietnamese emotional pop ballad 作为对照测试方向。 |
 
-## 4. 市场基础关键数据
+## 3. 市场基础关键数据
 
 | 国家 | 人口 | 互联网用户 | 互联网渗透率 | YouTube 触达 | 数字音乐基础判断 |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -31,7 +31,7 @@
 | Turkey | 87.6 million | 77.3 million | 88.3% | 57.5 million | 大市场，本地语言音乐信号很强 |
 | Vietnam | 101 million | 79.8 million | 78.8% | 62.3 million | 大市场，本地语言与流行音乐消费基础强 |
 
-## 5. 本地语言 / 本地艺人市场信号
+## 4. 本地语言 / 本地艺人市场信号
 
 | 国家 | Spotify 地区榜样本 | 本地语言 / 本地艺人周播放占比 | 本地信号 Top 20 数量 | 本地信号 Top 100 数量 | 判断 |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -42,7 +42,7 @@
 
 Lithuania 额外有 AGATA 官方综合榜单数据：Lithuanian / local artist 在官方 Singles Top 100 中有 36 首，Top 10 有 4 首，Top 20 有 9 首，平均在榜 58.8 周，说明本地艺人不仅有短期热度，也有长期留存。
 
-## 6. 大众风格偏好关键数据
+## 5. 大众风格偏好关键数据
 
 | 国家 | Spotify 最强风格 | Spotify 播放占比 | Spotify Top 100 数量 | YouTube 样本量 | YouTube 最强风格 | 综合判断 |
 | --- | --- | ---: | ---: | ---: | --- | --- |
@@ -51,7 +51,7 @@ Lithuania 额外有 AGATA 官方综合榜单数据：Lithuanian / local artist �
 | Turkey | pop / alt-pop | 72.59% | 72 | 29 | pop / alt-pop | 本地 pop / alt-pop 与 melodic hip-hop / pop-rap 都有强信号 |
 | Vietnam | pop / alt-pop | 82.01% | 87 | 35 | pop ballad | pop / alt-pop 是流媒体主线，情绪化 pop ballad 在 YouTube 长尾中更值得关注 |
 
-## 7. 初步投放方向
+## 6. 初步投放方向
 
 | 国家 | 主线测试风格 | 第二测试风格 | 第三测试风格 | 备注 |
 | --- | --- | --- | --- | --- |
@@ -60,12 +60,13 @@ Lithuania 额外有 AGATA 官方综合榜单数据：Lithuanian / local artist �
 | Turkey | Turkish pop / alt-pop | Turkish melodic hip-hop / pop-rap | Turkish dance-pop / electronic | 本地语言歌曲非常强，适合做本地化程度更高的歌曲 |
 | Vietnam | Vietnamese pop / alt-pop | Vietnamese melodic hip-hop / pop-rap | Vietnamese emotional pop ballad | 流媒体偏 pop，YouTube 长尾对情歌 / ballad 有明显信号 |
 
-## 8. 方法说明
+## 7. 方法说明
 
 本阶段采用三层判断逻辑：
 
 1. 先看市场基础：人口、互联网用户、互联网渗透率和 YouTube 触达，用于判断是否有数字音乐消费土壤。
 2. 再看本地语言机会：Spotify 地区榜中本地语言 / 本地艺人是否进入 Top 20 和 Top 100，以及周播放量占比是否足够高。
 3. 最后看风格选择：Spotify 用来判断短期流媒体主流偏好，YouTube 搜索样本用来补充判断本地语言歌曲的长尾播放偏好。两边都有信号的风格优先，只在单一平台强的风格作为对照或小规模测试方向。
+
 
 
