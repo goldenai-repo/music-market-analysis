@@ -1,0 +1,6 @@
+﻿genre_category,genre_category_label,current_heat_score_0_5,chart_coverage_score_0_5,breakout_score_0_5,retention_score_0_5,local_validation_score_0_5,weighted_recommendation_score_0_5,spotify_weekly_streams,spotify_stream_share,spotify_top_100_count,local_signal_count
+pop_alt_pop,pop / alt-pop,5,5,4.0,1.37,5,4.31,147172950,0.7259,72,138
+melodic_hiphop_poprap,melodic hip-hop / pop-rap,4.41,2.25,2.4,0.77,5,3.21,35768072,0.1764,18,20
+pop_ballad,pop ballad / love song,1.52,0.75,0.8,1.21,3.0,1.49,12315096,0.0607,6,12
+dance_electronic,dance-pop / electronic,0.82,0.38,0.8,0.59,1.25,0.77,6655691,0.0328,3,5
+rock_alternative,rock / alternative,0.1,0.12,0.0,0.63,0.25,0.2,836579,0.0041,1,1
