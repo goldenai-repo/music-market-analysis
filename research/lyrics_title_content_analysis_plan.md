@@ -2,7 +2,7 @@
 
 ## 1. Research Question
 
-How do song titles and lyric content relate to engagement performance in non-mainstream language markets?
+How do song titles and lyric content relate to engagement performance for released / online-generated songs in non-mainstream language markets?
 
 This analysis explores whether title style, title keywords, lyric themes, and emotional tone may help explain why some non-mainstream language songs perform better than others.
 
@@ -14,9 +14,9 @@ This analysis explores whether title style, title keywords, lyric themes, and em
 - **DistroKid:** streaming / platform performance data if available
 - **iTunes:** title, genre, release date
 - **Spotify:** complementary metadata
-- **Released Suno Songs:** needed for the final lyrics/title analysis
+- **Released / Online-Generated Suno Songs:** needed for the final lyrics/title analysis
 
-Current YouTube/iTunes/Spotify data can help test the framework, but the final analysis should use actual released Suno songs once titles, lyrics, and engagement metrics are available.
+Current YouTube/iTunes/Spotify data can help test the framework, but the final analysis should use actual released / online-generated Suno songs with available titles, lyrics, and engagement metrics.
 
 ---
 
@@ -29,6 +29,8 @@ If full lyrics are not available at first, the demo can start with title/content
 **Framework:**
 
 Title / lyric content variables → engagement metrics
+
+The analysis can start with one target market, such as Turkish, to reduce cross-market noise and improve interpretability.
 
 As a small framework test, I created two Turkish Suno demo songs with lyrics. These songs are not released, so they are only used to test content tagging, not engagement analysis.
 
@@ -81,4 +83,14 @@ Control for language, genre, and release timing; change one content variable at 
 
 **Main risks:** incomplete lyrics, missing released Suno song-level data, limited DistroKid data access, inconsistent genre labels, sparse comments, release timing effects, and uncertain Suno API / keyword search access. Unofficial API options exist but need further validation.
 
-**Next steps:** confirm available data fields (released Suno songs, DistroKid, YouTube) → refine tagging demo → select sample songs → tag content variables → calculate engagement metrics → identify preliminary patterns.
+**Next steps:** confirm available data fields → select one target market → refine tagging / text extraction framework → select sample songs → tag or classify content variables → calculate engagement metrics → identify preliminary patterns.
+
+---
+
+## 8. Text Information Extraction / NLP Extension
+
+This analysis can be extended from manual tagging to NLP-based text information extraction.
+
+For actual released / online-generated songs, titles and lyrics can be classified into broader content categories, such as romance, hometown/nostalgia, and local food/culture. These categories can then be compared with engagement metrics.
+
+Turkish can be used as the first market-level case study, especially for the hometown/nostalgia category. The Turkish demo songs are used only to validate the tagging framework; the actual analysis should focus on released / online-generated songs with observable engagement data.
