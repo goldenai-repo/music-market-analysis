@@ -93,4 +93,4 @@ This analysis can be extended from manual tagging to NLP-based text information 
 
 For actual released / online-generated songs, titles and lyrics can be classified into broader content categories, such as romance, hometown/nostalgia, and local food/culture. These categories can then be compared with engagement metrics.
 
-Turkish can be used as the first market-level case study, especially for the hometown/nostalgia category. The Turkish demo songs are used only to validate the tagging framework; the actual analysis should focus on released / online-generated songs with observable engagement data.
+Turkish can be used as the first market-level case study. The current Turkish demo songs only test the hometown/nostalgia category and are used to validate the tagging framework; the actual analysis should focus on released / online-generated songs with observable engagement data.
