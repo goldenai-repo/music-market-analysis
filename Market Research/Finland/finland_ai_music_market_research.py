@@ -286,9 +286,9 @@ Report date: {REPORT_DATE}
 
 ## Executive Summary
 
-The Finnish-language AI music market offers a medium-low to medium opportunity. The market is digitally mature and suitable for small-scale testing, but its audience size is limited and does not justify heavy investment yet.
+Finnish-language AI music is worth controlled testing. The market is small but digitally mature, streaming-led, low in content saturation, and shows visible AI music search interest.
 
-Final judgment: **Market Opportunity = Medium-Low to Medium**  
+Final judgment: **Market Opportunity = Medium**  
 Recommendation: **Monitor / Small-Scale Test**
 
 ## 1. Platform Availability & Verified Market Structure
@@ -400,8 +400,8 @@ AI acceptance conclusion: **Suno and AI Music show visible search interest in Fi
 
 ## 7. Final Assessment
 
-1. Is the Finnish-language market large enough?  
-   **Medium-small.** Finland has a population of 5.65M and 97.6% internet penetration. Online reach is strong, but the absolute Finnish-language audience ceiling is limited.
+1. Is the Finnish-language market large enough for a niche-language strategy?  
+   **Yes, for controlled testing.** Finland is not a large-population market, but that fits the research goal of finding smaller language markets. With 5.65M population and 97.6% internet penetration, the Finnish-language market is large enough for low-cost testing and performance validation.
 
 2. Which platform has the largest user reach?  
    **Spotify leads clearly in the Finland App Store rating-count proxy.** YouTube overall ad reach is 4.10M, indicating strong YouTube ecosystem reach, but this is not YouTube Music MAU.
@@ -413,7 +413,7 @@ AI acceptance conclusion: **Suno and AI Music show visible search interest in Fi
    **Medium.** The MusicBrainz wide `lang:fin` proxy shows 344 active artist-credits in the past 12 months, indicating a stable local creator base but not a highly saturated large-language market.
 
 5. Is Finnish-language content supply saturated?  
-   **No clear saturation.** The strict proxy shows 180 annual releases and 15 per month; the wide `lang:fin` proxy shows 530 annual releases, which is not a high supply volume.
+   **No, and this is a market opportunity.** The strict proxy shows 180 annual releases and 15 per month; the wide `lang:fin` proxy shows 530 annual releases, which suggests the Finnish-language supply is still limited rather than crowded.
 
 6. Has the local market started accepting AI music?  
    **There is visible user interest.** Google Trends Finland over the past 12 months shows Suno at 60.5, AI Music at 55.4, and Udio at 13.1, with an AI Interest Index of 43.0/100.
@@ -427,26 +427,13 @@ AI acceptance conclusion: **Suno and AI Music show visible search interest in Fi
     ("Demand", "Medium, with platform MAU data gap"),
     ("Monetization", "Medium / scenario-based"),
     ("Competition", "Medium"),
-    ("Supply Saturation", "Low"),
+    ("Supply Opportunity", "High, due to low saturation"),
     ("AI Interest", "Medium"),
 ])}
 
-Final Market Opportunity: **Medium-Low to Medium**
+Final Market Opportunity: **Medium**
 
 Recommendation: **Monitor / Small-Scale Test**
-
-## Practical Recommendation
-
-Priority validation platforms: **Spotify + YouTube + Apple Music**  
-Rationale: Spotify leads in the App Store rating-count proxy, YouTube has strong reach, and Apple Music has a higher per-stream estimate.
-
-Recommended actions:
-
-- Release 3-5 Finnish-language AI/AI-assisted songs per month and track save rate, skip rate, playlist adds, and 30-day streams.
-- Record real Finland-region data from Spotify for Artists / distributor dashboards to replace missing public MAU data.
-- Use YouTube lyric videos, visualizers, and Shorts cutdowns for discovery, search, and cold start.
-- Keep Apple Music distribution active as a higher per-stream estimate channel.
-- Keep iTunes as distribution coverage only, not as a main growth channel.
 
 """
     return report
