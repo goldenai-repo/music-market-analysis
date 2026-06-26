@@ -83,6 +83,8 @@ Control for language, genre, and release timing; change one content variable at 
 
 **Main risks:** incomplete lyrics, missing released Suno song-level data, limited DistroKid data access, inconsistent genre labels, sparse comments, release timing effects, and uncertain Suno API / keyword search access. Unofficial API options exist but need further validation.
 
+For the Turkish YouTube sample, engagement metrics may also be influenced by channel/distribution effects, artist popularity, and video age.
+
 **Next steps:** confirm available data fields → select one target market → refine tagging / text extraction framework → select sample songs → tag or classify content variables → calculate engagement metrics → identify preliminary patterns.
 
 ---
