@@ -1,6 +1,6 @@
 ﻿# Finland Finnish-Language AI Music Market Research
 
-Report date: 2026-06-22
+Report date: 2026-07-02
 
 ## Executive Summary
 
@@ -128,39 +128,77 @@ Apple Music has the highest per-stream estimate in this section. Spotify has a l
 | Indicator | Data |
 | --- | --- |
 | Finnish-language Artists | 344 active artist-credit proxy |
+| Soundcharts artist-country FI profiles | 32.2K |
 
 Scope: MusicBrainz `lang:fin` release data, Jul 2025-Jun 2026, deduplicated by artist-credit. The true total number of Finnish-language creators is likely higher than this proxy, but active publisher count is still far below large-language markets such as English, Spanish, or German.
 
-Competition conclusion: **Medium**. This is not an empty market, but competition is far lower than in English-language music.
+Soundcharts adds a broader all-time artist-profile proxy based on artist country, regardless of language or recent activity. It is not directly comparable with the MusicBrainz active Finnish-language proxy.
+
+Competition conclusion: **Medium**. MusicBrainz shows **344** active Finnish-language artist-credit proxies, while Soundcharts lists about **32.2K** artist-country FI profiles across its full database. The market is established, but neither measure is an official creator total.
 
 ## 5. Supply
 
-Scope: MusicBrainz strict proxy = `lang:fin AND country:FI`, covering **Jul 2025-Jun 20 2026**. Jun 2026 is a partial month.
+Scope: MusicBrainz strict proxy = `lang:fin AND country:FI`; country-only proxy = `country:FI` with no language restriction. Both cover **Jul 2025-Jun 20 2026**. Jun 2026 is a partial month.
 
-| Month | New Releases |
-| --- | --- |
-| Jan 2026 | 11 |
-| Feb 2026 | 14 |
-| Mar 2026 | 9 |
-| Apr 2026 | 8 |
-| May 2026 | 6 |
-| Jun 2026* | 5 |
-| Jul 2025 | 15 |
-| Aug 2025 | 20 |
-| Sep 2025 | 29 |
-| Oct 2025 | 22 |
-| Nov 2025 | 20 |
-| Dec 2025 | 21 |
+| Month | Finnish-language Releases in Finland | All-language Releases in Finland |
+| --- | --- | --- |
+| Jan 2026 | 11 | 21 |
+| Feb 2026 | 14 | 28 |
+| Mar 2026 | 9 | 20 |
+| Apr 2026 | 8 | 18 |
+| May 2026 | 6 | 17 |
+| Jun 2026* | 5 | 9 |
+| Jul 2025 | 15 | 38 |
+| Aug 2025 | 20 | 51 |
+| Sep 2025 | 29 | 55 |
+| Oct 2025 | 22 | 52 |
+| Nov 2025 | 20 | 53 |
+| Dec 2025 | 21 | 49 |
 
 | Metric | Data |
 | --- | --- |
 | Annual Releases, strict proxy | 180 |
 | Annual Releases, wide lang:fin proxy | 530 |
+| Annual Releases, country:FI all-language proxy | 411 |
 | Monthly Average, strict proxy | 15.0 |
-| Highest Month | 2025-09 (29) |
-| Lowest Month | 2026-06 (5; partial month) |
+| Monthly Average, country:FI all-language proxy | 34.2 |
+| Highest Month, strict proxy | 2025-09 (29) |
+| Lowest Month, strict proxy | 2026-06 (5; partial month) |
+| Highest Month, country:FI all-language proxy | 2025-09 (55) |
+| Lowest Month, country:FI all-language proxy | 2026-06 (9; partial month) |
 
-Supply conclusion: **Low to Medium saturation**. The strict proxy averages about 15 releases per month, while the wide proxy averages about 44 releases per month. Finnish-language content supply does not appear saturated.
+### Soundcharts Additional Proxy
+
+| Month | Songs with FI-country Artist | Finnish Lyrics (Beta) |
+| --- | --- | --- |
+| 2025-07 | 2K | 47 |
+| 2025-08 | 2.4K | 112 |
+| 2025-09 | 2.8K | 116 |
+| 2025-10 | 3K | 137 |
+| 2025-11 | 2.7K | 154 |
+| 2025-12 | 1.9K | 108 |
+| 2026-01 | 2.1K | 171 |
+| 2026-02 | 1.7K | 135 |
+| 2026-03 | 1.9K | 54 |
+| 2026-04 | 1.6K | 50 |
+| 2026-05 | 1.7K | 66 |
+| 2026-06 | 522 | 29 |
+
+| Indicator | Data |
+| --- | --- |
+| Soundcharts annual songs, FI-country artist proxy | 24.4K |
+| Soundcharts annual Finnish-lyrics display | 1.2K |
+| Finnish-lyrics monthly-count sum | 1,179 |
+| Monthly average, FI-country artist proxy | about 2.0K |
+| Monthly average, Finnish lyrics | 98.2 |
+| Highest month, FI-country artist proxy | 2025-10 (3K) |
+| Lowest month, FI-country artist proxy | 2026-06 (522; partial platform snapshot) |
+| Highest month, Finnish lyrics | 2026-01 (171) |
+| Lowest month, Finnish lyrics | 2026-06 (29; partial platform snapshot) |
+
+Soundcharts scope: artist country = Finland, release date = Jul 2025-Jun 2026, and no minimum platform-performance filter. The Finnish column additionally uses the Beta `Lyrics: Language = Finnish` filter. A song is included when at least one credited artist carries the FI country tag; this is broader than a release count. Soundcharts rounds large interface totals using `K`, and the snapshot was queried on 2026-07-02.
+
+Supply conclusion: **Low to Medium saturation / positive niche opportunity**. MusicBrainz shows **530** global Finnish-language release records, while Soundcharts shows about **1.2K** Finnish-lyrics songs tied to at least one FI-country artist. The larger database confirms more supply than MusicBrainz alone, but Finnish-language output remains small relative to Soundcharts' **24.4K** all-language FI-artist song proxy.
 
 ## 6. AI Music Acceptance
 
@@ -190,10 +228,10 @@ AI acceptance conclusion: **Suno and AI Music show visible search interest in Fi
    **Apple Music has the highest per-stream estimate.** Spotify uses creator-reported estimates, YouTube should be estimated through Music / Art Track, own channel videos, and Content ID paths, and iTunes has verified Finland Store prices but low download-market share.
 
 4. Is Finnish-language music competition intense?  
-   **Medium.** The MusicBrainz wide `lang:fin` proxy shows 344 active artist-credits in the past 12 months, indicating a stable local creator base but not a highly saturated large-language market.
+   **Medium.** MusicBrainz shows **344** active Finnish-language artist-credit proxies, while Soundcharts lists about **32.2K** all-time FI-country artist profiles. The Soundcharts figure is broader and does not imply that every profile is active or Finnish-language.
 
 5. Is Finnish-language content supply saturated?  
-   **No, and this is a market opportunity.** The strict proxy shows 180 annual releases and 15 per month; the wide `lang:fin` proxy shows 530 annual releases, which suggests the Finnish-language supply is still limited rather than crowded.
+   **It does not appear highly saturated.** MusicBrainz shows **530** global Finnish-language release records, while Soundcharts shows about **1.2K** Finnish-lyrics songs tied to FI-country artists during the period. This remains a positive niche opportunity signal, not an official market total.
 
 6. Has the local market started accepting AI music?  
    **There is visible user interest.** Google Trends Finland over the past 12 months shows Suno at 60.5, AI Music at 55.4, and Udio at 13.1, with an AI Interest Index of 43.0/100.

@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Iterable
 
 
-REPORT_DATE = "2026-06-22"
+REPORT_DATE = "2026-07-02"
 OUTPUT_FILE = "Finland_AI_Music_Market_Report.md"
 
 
@@ -96,8 +96,64 @@ MONTHLY_RELEASES = {
     "2025-12": 21,
 }
 
+# Country-only MusicBrainz proxy: country:FI, with no language filter.
+# Queried on 2026-06-29 for the same Jul 2025-Jun 20, 2026 period.
+MONTHLY_COUNTRY_FI_RELEASES = {
+    "2026-01": 21,
+    "2026-02": 28,
+    "2026-03": 20,
+    "2026-04": 18,
+    "2026-05": 17,
+    "2026-06": 9,
+    "2025-07": 38,
+    "2025-08": 51,
+    "2025-09": 55,
+    "2025-10": 52,
+    "2025-11": 53,
+    "2025-12": 49,
+}
+
 MUSICBRAINZ_WIDE_TOTAL_RELEASES = 530
 MUSICBRAINZ_UNIQUE_ARTISTS = 344
+
+# Soundcharts snapshot, queried on 2026-07-02.
+# Filters: artist country FI, release date by month, no performance minimum.
+# Local-language counts also use Lyrics: Language = Finnish (Beta).
+SOUNDCHARTS_ARTIST_PROFILES = "32.2K"
+SOUNDCHARTS_MONTHS = [
+    "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12",
+    "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06",
+]
+SOUNDCHARTS_MONTHLY_FI_ARTIST_SONGS = {
+    "2025-07": "2K",
+    "2025-08": "2.4K",
+    "2025-09": "2.8K",
+    "2025-10": "3K",
+    "2025-11": "2.7K",
+    "2025-12": "1.9K",
+    "2026-01": "2.1K",
+    "2026-02": "1.7K",
+    "2026-03": "1.9K",
+    "2026-04": "1.6K",
+    "2026-05": "1.7K",
+    "2026-06": "522",
+}
+SOUNDCHARTS_MONTHLY_FINNISH_LYRICS_SONGS = {
+    "2025-07": 47,
+    "2025-08": 112,
+    "2025-09": 116,
+    "2025-10": 137,
+    "2025-11": 154,
+    "2025-12": 108,
+    "2026-01": 171,
+    "2026-02": 135,
+    "2026-03": 54,
+    "2026-04": 50,
+    "2026-05": 66,
+    "2026-06": 29,
+}
+SOUNDCHARTS_ANNUAL_FI_ARTIST_SONGS = "24.4K"
+SOUNDCHARTS_ANNUAL_FINNISH_LYRICS_DISPLAY = "1.2K"
 
 AI_TRENDS = {
     "Suno": 60.5,
@@ -184,7 +240,11 @@ def refresh_itunes(term: str = "kuumaa") -> dict:
         return json.loads(response.read().decode("utf-8"))
 
 
-def refresh_musicbrainz_monthly() -> dict[str, int]:
+def refresh_musicbrainz_monthly(scope: str = "strict") -> dict[str, int]:
+    query_filter = {
+        "strict": "lang:fin AND country:FI",
+        "country": "country:FI",
+    }[scope]
     headers = {"User-Agent": "GoldenAIResearch/1.0 (market-research)"}
     months = [
         ("2025-07", "2025-07-01", "2025-07-31"),
@@ -202,7 +262,7 @@ def refresh_musicbrainz_monthly() -> dict[str, int]:
     ]
     output: dict[str, int] = {}
     for month, start, end in months:
-        query = urllib.parse.quote(f"lang:fin AND country:FI AND date:[{start} TO {end}]")
+        query = urllib.parse.quote(f"{query_filter} AND date:[{start} TO {end}]")
         url = f"https://musicbrainz.org/ws/2/release/?query={query}&fmt=json&limit=1"
         request = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(request, timeout=30) as response:
@@ -256,23 +316,31 @@ def generate_report() -> str:
     ]
 
     ordered_release_rows = [
-        ("Jan 2026", MONTHLY_RELEASES["2026-01"]),
-        ("Feb 2026", MONTHLY_RELEASES["2026-02"]),
-        ("Mar 2026", MONTHLY_RELEASES["2026-03"]),
-        ("Apr 2026", MONTHLY_RELEASES["2026-04"]),
-        ("May 2026", MONTHLY_RELEASES["2026-05"]),
-        ("Jun 2026*", MONTHLY_RELEASES["2026-06"]),
-        ("Jul 2025", MONTHLY_RELEASES["2025-07"]),
-        ("Aug 2025", MONTHLY_RELEASES["2025-08"]),
-        ("Sep 2025", MONTHLY_RELEASES["2025-09"]),
-        ("Oct 2025", MONTHLY_RELEASES["2025-10"]),
-        ("Nov 2025", MONTHLY_RELEASES["2025-11"]),
-        ("Dec 2025", MONTHLY_RELEASES["2025-12"]),
+        ("Jan 2026", MONTHLY_RELEASES["2026-01"], MONTHLY_COUNTRY_FI_RELEASES["2026-01"]),
+        ("Feb 2026", MONTHLY_RELEASES["2026-02"], MONTHLY_COUNTRY_FI_RELEASES["2026-02"]),
+        ("Mar 2026", MONTHLY_RELEASES["2026-03"], MONTHLY_COUNTRY_FI_RELEASES["2026-03"]),
+        ("Apr 2026", MONTHLY_RELEASES["2026-04"], MONTHLY_COUNTRY_FI_RELEASES["2026-04"]),
+        ("May 2026", MONTHLY_RELEASES["2026-05"], MONTHLY_COUNTRY_FI_RELEASES["2026-05"]),
+        ("Jun 2026*", MONTHLY_RELEASES["2026-06"], MONTHLY_COUNTRY_FI_RELEASES["2026-06"]),
+        ("Jul 2025", MONTHLY_RELEASES["2025-07"], MONTHLY_COUNTRY_FI_RELEASES["2025-07"]),
+        ("Aug 2025", MONTHLY_RELEASES["2025-08"], MONTHLY_COUNTRY_FI_RELEASES["2025-08"]),
+        ("Sep 2025", MONTHLY_RELEASES["2025-09"], MONTHLY_COUNTRY_FI_RELEASES["2025-09"]),
+        ("Oct 2025", MONTHLY_RELEASES["2025-10"], MONTHLY_COUNTRY_FI_RELEASES["2025-10"]),
+        ("Nov 2025", MONTHLY_RELEASES["2025-11"], MONTHLY_COUNTRY_FI_RELEASES["2025-11"]),
+        ("Dec 2025", MONTHLY_RELEASES["2025-12"], MONTHLY_COUNTRY_FI_RELEASES["2025-12"]),
     ]
     annual_releases = sum(MONTHLY_RELEASES.values())
     avg_releases = annual_releases / len(MONTHLY_RELEASES)
     highest_month = max(MONTHLY_RELEASES.items(), key=lambda item: item[1])
     lowest_month = min(MONTHLY_RELEASES.items(), key=lambda item: item[1])
+    annual_country_fi_releases = sum(MONTHLY_COUNTRY_FI_RELEASES.values())
+    avg_country_fi_releases = annual_country_fi_releases / len(MONTHLY_COUNTRY_FI_RELEASES)
+    highest_country_fi_month = max(
+        MONTHLY_COUNTRY_FI_RELEASES.items(), key=lambda item: item[1]
+    )
+    lowest_country_fi_month = min(
+        MONTHLY_COUNTRY_FI_RELEASES.items(), key=lambda item: item[1]
+    )
     known_trend_values = [value for value in AI_TRENDS.values() if value is not None]
     ai_interest = (
         sum(known_trend_values) / len(known_trend_values)
@@ -364,27 +432,62 @@ Apple Music has the highest per-stream estimate in this section. Spotify has a l
 
 {rows(["Indicator", "Data"], [
     ("Finnish-language Artists", f"{MUSICBRAINZ_UNIQUE_ARTISTS:,} active artist-credit proxy"),
+    ("Soundcharts artist-country FI profiles", SOUNDCHARTS_ARTIST_PROFILES),
 ])}
 
 Scope: MusicBrainz `lang:fin` release data, Jul 2025-Jun 2026, deduplicated by artist-credit. The true total number of Finnish-language creators is likely higher than this proxy, but active publisher count is still far below large-language markets such as English, Spanish, or German.
 
-Competition conclusion: **Medium**. This is not an empty market, but competition is far lower than in English-language music.
+Soundcharts adds a broader all-time artist-profile proxy based on artist country, regardless of language or recent activity. It is not directly comparable with the MusicBrainz active Finnish-language proxy.
+
+Competition conclusion: **Medium**. MusicBrainz shows **344** active Finnish-language artist-credit proxies, while Soundcharts lists about **32.2K** artist-country FI profiles across its full database. The market is established, but neither measure is an official creator total.
 
 ## 5. Supply
 
-Scope: MusicBrainz strict proxy = `lang:fin AND country:FI`, covering **Jul 2025-Jun 20 2026**. Jun 2026 is a partial month.
+Scope: MusicBrainz strict proxy = `lang:fin AND country:FI`; country-only proxy = `country:FI` with no language restriction. Both cover **Jul 2025-Jun 20 2026**. Jun 2026 is a partial month.
 
-{rows(["Month", "New Releases"], ordered_release_rows)}
+{rows(["Month", "Finnish-language Releases in Finland", "All-language Releases in Finland"], ordered_release_rows)}
 
 {rows(["Metric", "Data"], [
     ("Annual Releases, strict proxy", f"{annual_releases:,}"),
     ("Annual Releases, wide lang:fin proxy", f"{MUSICBRAINZ_WIDE_TOTAL_RELEASES:,}"),
+    ("Annual Releases, country:FI all-language proxy", f"{annual_country_fi_releases:,}"),
     ("Monthly Average, strict proxy", f"{avg_releases:.1f}"),
-    ("Highest Month", f"{highest_month[0]} ({highest_month[1]})"),
-    ("Lowest Month", f"{lowest_month[0]} ({lowest_month[1]}; partial month)"),
+    ("Monthly Average, country:FI all-language proxy", f"{avg_country_fi_releases:.1f}"),
+    ("Highest Month, strict proxy", f"{highest_month[0]} ({highest_month[1]})"),
+    ("Lowest Month, strict proxy", f"{lowest_month[0]} ({lowest_month[1]}; partial month)"),
+    ("Highest Month, country:FI all-language proxy", f"{highest_country_fi_month[0]} ({highest_country_fi_month[1]})"),
+    ("Lowest Month, country:FI all-language proxy", f"{lowest_country_fi_month[0]} ({lowest_country_fi_month[1]}; partial month)"),
 ])}
 
-Supply conclusion: **Low to Medium saturation**. The strict proxy averages about 15 releases per month, while the wide proxy averages about 44 releases per month. Finnish-language content supply does not appear saturated.
+### Soundcharts Additional Proxy
+
+{rows(
+    ["Month", "Songs with FI-country Artist", "Finnish Lyrics (Beta)"],
+    [
+        (
+            month,
+            SOUNDCHARTS_MONTHLY_FI_ARTIST_SONGS[month],
+            SOUNDCHARTS_MONTHLY_FINNISH_LYRICS_SONGS[month],
+        )
+        for month in SOUNDCHARTS_MONTHS
+    ],
+)}
+
+{rows(["Indicator", "Data"], [
+    ("Soundcharts annual songs, FI-country artist proxy", SOUNDCHARTS_ANNUAL_FI_ARTIST_SONGS),
+    ("Soundcharts annual Finnish-lyrics display", SOUNDCHARTS_ANNUAL_FINNISH_LYRICS_DISPLAY),
+    ("Finnish-lyrics monthly-count sum", f"{sum(SOUNDCHARTS_MONTHLY_FINNISH_LYRICS_SONGS.values()):,}"),
+    ("Monthly average, FI-country artist proxy", "about 2.0K"),
+    ("Monthly average, Finnish lyrics", f"{sum(SOUNDCHARTS_MONTHLY_FINNISH_LYRICS_SONGS.values()) / 12:.1f}"),
+    ("Highest month, FI-country artist proxy", "2025-10 (3K)"),
+    ("Lowest month, FI-country artist proxy", "2026-06 (522; partial platform snapshot)"),
+    ("Highest month, Finnish lyrics", "2026-01 (171)"),
+    ("Lowest month, Finnish lyrics", "2026-06 (29; partial platform snapshot)"),
+])}
+
+Soundcharts scope: artist country = Finland, release date = Jul 2025-Jun 2026, and no minimum platform-performance filter. The Finnish column additionally uses the Beta `Lyrics: Language = Finnish` filter. A song is included when at least one credited artist carries the FI country tag; this is broader than a release count. Soundcharts rounds large interface totals using `K`, and the snapshot was queried on 2026-07-02.
+
+Supply conclusion: **Low to Medium saturation / positive niche opportunity**. MusicBrainz shows **530** global Finnish-language release records, while Soundcharts shows about **1.2K** Finnish-lyrics songs tied to at least one FI-country artist. The larger database confirms more supply than MusicBrainz alone, but Finnish-language output remains small relative to Soundcharts' **24.4K** all-language FI-artist song proxy.
 
 ## 6. AI Music Acceptance
 
@@ -410,10 +513,10 @@ AI acceptance conclusion: **Suno and AI Music show visible search interest in Fi
    **Apple Music has the highest per-stream estimate.** Spotify uses creator-reported estimates, YouTube should be estimated through Music / Art Track, own channel videos, and Content ID paths, and iTunes has verified Finland Store prices but low download-market share.
 
 4. Is Finnish-language music competition intense?  
-   **Medium.** The MusicBrainz wide `lang:fin` proxy shows 344 active artist-credits in the past 12 months, indicating a stable local creator base but not a highly saturated large-language market.
+   **Medium.** MusicBrainz shows **344** active Finnish-language artist-credit proxies, while Soundcharts lists about **32.2K** all-time FI-country artist profiles. The Soundcharts figure is broader and does not imply that every profile is active or Finnish-language.
 
 5. Is Finnish-language content supply saturated?  
-   **No, and this is a market opportunity.** The strict proxy shows 180 annual releases and 15 per month; the wide `lang:fin` proxy shows 530 annual releases, which suggests the Finnish-language supply is still limited rather than crowded.
+   **It does not appear highly saturated.** MusicBrainz shows **530** global Finnish-language release records, while Soundcharts shows about **1.2K** Finnish-lyrics songs tied to FI-country artists during the period. This remains a positive niche opportunity signal, not an official market total.
 
 6. Has the local market started accepting AI music?  
    **There is visible user interest.** Google Trends Finland over the past 12 months shows Suno at 60.5, AI Music at 55.4, and Udio at 13.1, with an AI Interest Index of 43.0/100.
@@ -448,6 +551,12 @@ def main() -> None:
     )
     parser.add_argument("--refresh-itunes", action="store_true")
     parser.add_argument("--refresh-musicbrainz", action="store_true")
+    parser.add_argument(
+        "--musicbrainz-scope",
+        choices=("strict", "country"),
+        default="strict",
+        help="Use strict for lang:fin AND country:FI, or country for country:FI only.",
+    )
     args = parser.parse_args()
 
     if args.refresh_itunes:
@@ -455,10 +564,18 @@ def main() -> None:
         return
 
     if args.refresh_musicbrainz:
-        print(json.dumps(refresh_musicbrainz_monthly(), ensure_ascii=False, indent=2))
+        print(
+            json.dumps(
+                refresh_musicbrainz_monthly(args.musicbrainz_scope),
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
         return
 
     output_path = Path(args.output)
+    if not output_path.is_absolute():
+        output_path = Path(__file__).resolve().parent / output_path
     output_path.write_text(generate_report(), encoding="utf-8-sig")
     print(f"Wrote {output_path}")
 

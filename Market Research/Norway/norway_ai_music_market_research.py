@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Iterable
 
 
-REPORT_DATE = "2026-06-25"
+REPORT_DATE = "2026-07-02"
 OUTPUT_FILE = "Norway_Norwegian_AI_Music_Market_Report.md"
 
 
@@ -108,6 +108,45 @@ WIDE_MONTHLY_RELEASES = {
 MUSICBRAINZ_WIDE_ACTIVE_ARTIST_CREDITS = 139
 MUSICBRAINZ_STRICT_UNIQUE_RELEASES = 67
 MUSICBRAINZ_WIDE_UNIQUE_RELEASES = 170
+
+# Soundcharts snapshot, queried on 2026-07-02.
+# Filters: artist country NO, release date by month, no performance minimum.
+# Local-language counts also use Lyrics: Language = Norwegian (Beta).
+SOUNDCHARTS_ARTIST_PROFILES = "37.7K"
+SOUNDCHARTS_MONTHS = [
+    "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12",
+    "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06",
+]
+SOUNDCHARTS_MONTHLY_NO_ARTIST_SONGS = {
+    "2025-07": "2.1K",
+    "2025-08": "2.6K",
+    "2025-09": "3.6K",
+    "2025-10": "4K",
+    "2025-11": "3.7K",
+    "2025-12": "2.4K",
+    "2026-01": "2.8K",
+    "2026-02": "2.2K",
+    "2026-03": "2.4K",
+    "2026-04": "2.1K",
+    "2026-05": "2.4K",
+    "2026-06": "806",
+}
+SOUNDCHARTS_MONTHLY_NORWEGIAN_LYRICS_SONGS = {
+    "2025-07": 58,
+    "2025-08": 184,
+    "2025-09": 208,
+    "2025-10": 258,
+    "2025-11": 227,
+    "2025-12": 102,
+    "2026-01": 207,
+    "2026-02": 146,
+    "2026-03": 78,
+    "2026-04": 99,
+    "2026-05": 130,
+    "2026-06": 70,
+}
+SOUNDCHARTS_ANNUAL_NO_ARTIST_SONGS = "31.2K"
+SOUNDCHARTS_ANNUAL_NORWEGIAN_LYRICS_DISPLAY = "1.8K"
 
 
 AI_TRENDS = {
@@ -335,11 +374,14 @@ Monetization rating: **Medium / scenario-based**. Apple Music has the higher per
 
 {rows(["Indicator", "Data"], [
     ("Norwegian-language active artist-credit proxy", MUSICBRAINZ_WIDE_ACTIVE_ARTIST_CREDITS),
+    ("Soundcharts artist-country NO profiles", SOUNDCHARTS_ARTIST_PROFILES),
 ])}
 
 Scope: MusicBrainz `lang:nor`, `lang:nob`, and `lang:nno` release data, Jul 2025-Jun 25 2026, deduplicated by artist-credit. This means artists who released Norwegian-language music in the past 12 months, not all historical Norwegian-language artists.
 
-Competition conclusion: **Medium-Low to Medium**. The active artist-credit proxy is smaller than large-language music markets, which supports testing new AI-assisted Norwegian-language content.
+Soundcharts adds a broader all-time artist-profile proxy based on artist country, regardless of language or recent activity. It is not directly comparable with the MusicBrainz active Norwegian-language proxy.
+
+Competition conclusion: **Medium**. MusicBrainz shows **139** active Norwegian-language artist-credit proxies, while Soundcharts lists about **37.7K** artist-country NO profiles across its full database. The market is established, but neither measure is an official creator total.
 
 ## 5. Supply
 
@@ -349,7 +391,35 @@ Competition conclusion: **Medium-Low to Medium**. The active artist-credit proxy
 
 Strict proxy = `lang:nor/nob/nno AND country:NO`; wide proxy = `lang:nor/nob/nno`. Monthly counts are grouped by actual release date after fetching MusicBrainz releases.
 
-Supply conclusion: **High opportunity due to low saturation**. The wide dated proxy shows about **160 releases** across the past 12 months, or **13.3 per month**. For a niche-language AI music strategy, limited supply is an opportunity rather than a negative signal.
+### Soundcharts Additional Proxy
+
+{rows(
+    ["Month", "Songs with NO-country Artist", "Norwegian Lyrics (Beta)"],
+    [
+        (
+            month,
+            SOUNDCHARTS_MONTHLY_NO_ARTIST_SONGS[month],
+            SOUNDCHARTS_MONTHLY_NORWEGIAN_LYRICS_SONGS[month],
+        )
+        for month in SOUNDCHARTS_MONTHS
+    ],
+)}
+
+{rows(["Indicator", "Data"], [
+    ("Soundcharts annual songs, NO-country artist proxy", SOUNDCHARTS_ANNUAL_NO_ARTIST_SONGS),
+    ("Soundcharts annual Norwegian-lyrics display", SOUNDCHARTS_ANNUAL_NORWEGIAN_LYRICS_DISPLAY),
+    ("Norwegian-lyrics monthly-count sum", f"{sum(SOUNDCHARTS_MONTHLY_NORWEGIAN_LYRICS_SONGS.values()):,}"),
+    ("Monthly average, NO-country artist proxy", "about 2.6K"),
+    ("Monthly average, Norwegian lyrics", f"{sum(SOUNDCHARTS_MONTHLY_NORWEGIAN_LYRICS_SONGS.values()) / 12:.1f}"),
+    ("Highest month, NO-country artist proxy", "2025-10 (4K)"),
+    ("Lowest month, NO-country artist proxy", "2026-06 (806; partial platform snapshot)"),
+    ("Highest month, Norwegian lyrics", "2025-10 (258)"),
+    ("Lowest month, Norwegian lyrics", "2025-07 (58)"),
+])}
+
+Soundcharts scope: artist country = Norway, release date = Jul 2025-Jun 2026, and no minimum platform-performance filter. The Norwegian column additionally uses the Beta `Lyrics: Language = Norwegian` filter. A song is included when at least one credited artist carries the NO country tag; this is broader than a release count. Soundcharts rounds large interface totals using `K`, and the snapshot was queried on 2026-07-02.
+
+Supply conclusion: **Medium saturation / positive niche opportunity**. MusicBrainz shows **160** dated Norwegian-language release records, while Soundcharts shows about **1.8K** Norwegian-lyrics songs tied to at least one NO-country artist. The larger database shows more supply than MusicBrainz alone, but the Norwegian-language segment remains small relative to Soundcharts' **31.2K** all-language NO-artist song proxy.
 
 ## 6. AI Music Acceptance
 
@@ -376,10 +446,10 @@ AI acceptance conclusion: **Medium-Low to Medium**. `Suno` shows consistent sear
    **Apple Music has the highest per-stream estimate, while Spotify has the strongest platform-scale proxy.** YouTube should be treated as discovery plus secondary monetization. iTunes is coverage only.
 
 4. Is Norwegian-language music competition intense?  
-   **Medium-Low to Medium.** MusicBrainz shows **139** active Norwegian-language artist-credit proxies in the past 12 months.
+   **Medium.** MusicBrainz shows **139** active Norwegian-language artist-credit proxies, while Soundcharts lists about **37.7K** all-time NO-country artist profiles. The Soundcharts figure is broader and does not mean every profile is active or Norwegian-language.
 
 5. Is Norwegian-language content supply low, and is that an opportunity?  
-   **Yes.** The wide dated proxy shows **160** releases in the past 12 months. Low saturation is a positive opportunity signal for AI-assisted niche-language content testing.
+   **Supply is larger than MusicBrainz alone suggests, but the niche opportunity remains.** MusicBrainz shows **160** dated Norwegian-language releases, while Soundcharts shows about **1.8K** Norwegian-lyrics songs tied to NO-country artists during the period.
 
 6. Has the local market started showing AI music interest?  
    **Yes, but unevenly.** Google Trends Norway shows `Suno` at **58.3**, `AI Music` at **38.1**, `Udio` at **1.2**, and `KI-musikk` at **0.0**. The core AI Interest Index is **32.5/100**.
@@ -392,8 +462,8 @@ AI acceptance conclusion: **Medium-Low to Medium**. `Suno` shows consistent sear
 {rows(["Dimension", "Rating"], [
     ("Demand", "Medium"),
     ("Monetization", "Medium / scenario-based"),
-    ("Competition", "Medium-Low to Medium"),
-    ("Supply Opportunity", "High, due to low saturation"),
+    ("Competition", "Medium"),
+    ("Supply Opportunity", "Medium-High"),
     ("AI Interest", "Medium-Low to Medium"),
 ])}
 
