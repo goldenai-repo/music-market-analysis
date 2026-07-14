@@ -2,7 +2,7 @@ import csv
 from pathlib import Path
 
 INPUT_PATH = Path("data/processed/turkish_youtube_auto_sample.csv")
-OUTPUT_PATH = Path("data/processed/turkish_youtube_review_sample.csv")
+OUTPUT_PATH = Path("data/processed/turkish_youtube_review_flagged_sample.csv")
 
 REVIEW_COLUMNS = [
     "video_id",
@@ -15,6 +15,7 @@ REVIEW_COLUMNS = [
     "comment_count",
     "search_query",
     "description_preview",
+    "auto_review_flag",
     "manual_valid",
     "language_verified",
     "is_music_video",
@@ -44,6 +45,41 @@ def parse_count(value: str) -> str:
         return ""
 
 
+def get_auto_review_flag(title: str, description: str) -> str:
+    """Assign a lightweight rule-based flag for manual review."""
+    text = f"{title} {description}".lower()
+
+    tutorial_keywords = [
+        "nasıl kullanılır",
+        "rehber",
+        "tutorial",
+        "prompt",
+        "kullanım şartları",
+        "studio",
+        "inceleme",
+        "adım adım",
+        "nasıl yapılır",
+    ]
+
+    mix_keywords = [
+        "mix",
+        "set",
+        "full album",
+        "best of",
+        "en çok dinlenen",
+        "playlist",
+        "compilation",
+    ]
+
+    if any(keyword in text for keyword in tutorial_keywords):
+        return "likely_tutorial"
+
+    if any(keyword in text for keyword in mix_keywords):
+        return "likely_mix_or_compilation"
+
+    return "likely_song"
+
+
 def main() -> None:
     if not INPUT_PATH.exists():
         raise FileNotFoundError(f"Input file not found: {INPUT_PATH}")
@@ -62,12 +98,13 @@ def main() -> None:
 
             seen_video_ids.add(video_id)
 
+            title = clean_text(row.get("song_title", ""))
             description = clean_text(row.get("description", ""))
 
             cleaned_rows.append(
                 {
                     "video_id": video_id,
-                    "song_title": clean_text(row.get("song_title", "")),
+                    "song_title": title,
                     "channel_title": clean_text(row.get("channel_title", "")),
                     "published_at": clean_text(row.get("published_at", "")),
                     "youtube_url": clean_text(row.get("youtube_url", "")),
@@ -76,6 +113,7 @@ def main() -> None:
                     "comment_count": parse_count(row.get("comment_count", "")),
                     "search_query": clean_text(row.get("search_query", "")),
                     "description_preview": description[:120],
+                    "auto_review_flag": get_auto_review_flag(title, description),
                     "manual_valid": "",
                     "language_verified": "",
                     "is_music_video": "",
