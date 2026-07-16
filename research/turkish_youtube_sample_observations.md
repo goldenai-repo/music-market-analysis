@@ -17,5 +17,13 @@ Several titles contain metaphors, place names, broad emotional phrases, or cultu
 ### Observation 4: Comment-based engagement needs caution.
 Some videos have limited or unusual comment data (e.g.TARKAN - Şımarık), so comment rate should be interpreted carefully.
 
-## 3. Next Step
-Refine the lyric/title tagging rule and explore embedding-based classification as a possible next step.
+## 3. Transcript Collection Update
+
+- Integrated `youtube-transcript-api` and retrieved transcripts for 5 manually validated music videos.
+- Four transcripts were in Turkish and one was in English.
+- Three Turkish transcripts were usable with minor ASR noise; one was too short for reliable lyric-level analysis.
+- English-language covers will be excluded from the Turkish lyric-analysis subset.
+
+### Next Step
+
+Expand transcript collection and continue manual quality review before lyric-level embedding analysis.
