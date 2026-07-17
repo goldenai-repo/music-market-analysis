@@ -24,6 +24,15 @@ Some videos have limited or unusual comment data (e.g.TARKAN - Şımarık), so c
 - Three Turkish transcripts were usable with minor ASR noise; one was too short for reliable lyric-level analysis.
 - English-language covers will be excluded from the Turkish lyric-analysis subset.
 
+## 4. Artist-based Candidate Collection
+
+Implemented an artist → song → YouTube Search API pipeline to expand the Turkish music dataset
+
+- 2 seed artists and 5 seed songs
+- 15 candidate videos retrieved and manually reviewed
+- 12 valid music videos
+- 5 primary versions selected for transcript collection
+
 ### Next Step
 
-Expand transcript collection and continue manual quality review before lyric-level embedding analysis.
+Collect transcripts for selected songs and continue lyric-level analysis.
