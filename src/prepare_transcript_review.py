@@ -4,8 +4,13 @@ import csv
 from pathlib import Path
 
 
-INPUT_PATH = Path("data/processed/turkish_transcripts.csv")
-OUTPUT_PATH = Path("data/processed/turkish_transcript_review_sample.csv")
+INPUT_PATH = Path(
+    "data/processed/turkish_transcripts_21.csv"
+)
+
+OUTPUT_PATH = Path(
+    "data/processed/turkish_transcript_review_21.csv"
+)
 
 NEW_COLUMNS = [
     "transcript_quality",
@@ -21,46 +26,66 @@ def suggest_review_values(row: dict[str, str]) -> tuple[str, str, str]:
     These values are only starting points and should still be manually checked.
     """
     available = row.get("transcript_available", "").strip().lower()
-    language_code = row.get("transcript_language_code", "").strip().lower()
-    title = row.get("song_title", "").strip().lower()
+    language_code = row.get("transcript_language", "").strip().lower()
 
-    try:
-        snippet_count = int(row.get("transcript_snippet_count", "0") or 0)
-    except ValueError:
-        snippet_count = 0
+    title = (
+        row.get("seed_song_title", "").strip()
+        or row.get("candidate_title", "").strip()
+    ).lower()
+
+    transcript_clean = row.get("transcript_clean", "").strip()
+    word_count = len(transcript_clean.split())
+
+    transcript_error = row.get("transcript_error", "").strip()
+    error_type = (
+        transcript_error.split(":", 1)[0]
+        if transcript_error
+        else ""
+    )
 
     if available != "yes":
         return (
             "unavailable",
-            "unclear",
-            row.get("transcript_error_type", "") or "Transcript unavailable",
+            "no",
+            error_type or "Transcript unavailable",
         )
 
     if language_code and not language_code.startswith("tr"):
         return (
             "wrong_language",
             "no",
-            f"Transcript language is {language_code or 'unknown'}, not Turkish.",
+            f"Transcript language is {language_code}, not Turkish.",
         )
 
-    if "full album" in title or "compilation" in title or "playlist" in title:
+    if (
+        "full album" in title
+        or "compilation" in title
+        or "playlist" in title
+    ):
         return (
             "not_song_level",
             "unclear",
-            "Video may contain multiple songs; exclude from song-level analysis.",
+            "Video may contain multiple songs; inspect manually.",
         )
 
-    if snippet_count < 10:
+    if word_count < 30:
         return (
             "too_short",
             "unclear",
-            f"Transcript contains only {snippet_count} snippets; inspect manually.",
+            f"Transcript contains only {word_count} words; inspect manually.",
+        )
+
+    if row.get("transcript_is_generated", "").strip().lower() == "yes":
+        return (
+            "needs_manual_review",
+            "yes",
+            "Turkish auto-generated transcript; check recognition noise.",
         )
 
     return (
         "needs_manual_review",
-        "unclear",
-        "",
+        "yes",
+        "Turkish transcript available; inspect lyric accuracy.",
     )
 
 

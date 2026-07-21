@@ -27,11 +27,11 @@ from youtube_transcript_api import YouTubeTranscriptApi
 
 
 DEFAULT_INPUT_PATH = Path(
-    "data/processed/turkish_youtube_review_sample.csv"
+    "data/processed/turkish_transcript_input.csv"
 )
 
 DEFAULT_OUTPUT_PATH = Path(
-    "data/processed/turkish_youtube_transcript_test_sample.csv"
+    "data/processed/turkish_transcripts_21.csv"
 )
 
 TRANSCRIPT_FIELDS = [
@@ -228,7 +228,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--max-videos",
         type=int,
-        default=5,
+        default=0,
         help=(
             "Maximum number of eligible videos to process. "
             "Use 0 to process all eligible videos."
@@ -281,7 +281,10 @@ def main() -> None:
 
     for index, row in enumerate(eligible_rows, start=1):
         video_id = str(row.get("video_id", "")).strip()
-        song_title = str(row.get("song_title", "")).strip()
+        song_title = (str(row.get("seed_song_title", "")).strip()
+    or str(row.get("candidate_title", "")).strip()
+    or str(row.get("song_title", "")).strip()
+)
 
         if not video_id:
             result = {

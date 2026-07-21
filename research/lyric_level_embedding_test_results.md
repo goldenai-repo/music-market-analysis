@@ -36,9 +36,15 @@ This note summarizes two exploratory lyric-level embedding tests for Turkish You
 - Smaller score margins may indicate greater semantic overlap or classification uncertainty.
 - These findings remain exploratory because the sample is small.
 
+## Test 3: Expanded 8-Song Evaluation
+The pipeline was applied to eight reviewed Turkish songs. Results showed frequent overlap between Romance / heartbreak and Healing / relaxing, small score margins, and weaker performance on social-protest themes and noisy transcripts.
+
+The results are best treated as machine-assisted pre-labeling and preserved as a baseline while the next phase focuses on pipeline automation and the DistroKid release test.
+
 ## Output
 - Script: `src/lyric_level_embedding.py`
 - Results: `data/processed/turkish_lyric_embedding_results.csv`
+- Expanded results: `data/processed/turkish_lyric_embedding_results_8.csv`
 
 ## Next Step
-Expand the reviewed transcript sample, manually assign theme labels, and compare title-level and lyric-level predictions. Use the results to define candidate groups and engagement metrics for an initial A/B testing framework.
+Prioritize pipeline automation and the DistroKid release test. Revisit theme descriptions after collecting more samples.

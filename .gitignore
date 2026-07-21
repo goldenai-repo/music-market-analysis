@@ -1,13 +1,35 @@
-.env
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
+
+# Virtual environments
 .venv/
+.venv*/
 venv/
-data/raw/*
-!data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
+env/
+
+# macOS
 .DS_Store
-claude/
-.claude/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Model and cache files
+.cache/
+huggingface/
+
+# Temporary files
+*.tmp
+*.log
