@@ -2,7 +2,7 @@
 
 ## 1. Research Question
 
-How do song titles and lyric theme relate to engagement performance for released / online-generated songs in non-mainstream language markets?
+How do song titles and lyric themes relate to engagement performance for released / online-generated songs in non-mainstream language markets?
 
 This analysis explores whether title style, title keywords, lyric themes, and emotional tone may help explain why some non-mainstream language songs perform better than others.
 
@@ -30,7 +30,7 @@ Embedding can be used to support lyric-theme classification. The resulting theme
 
 **Framework:**
 
-Title / lyric content variables → engagement metrics
+Title / lyric features → theme labels → engagement metrics
 
 The analysis can start with one target market, such as Turkish, to reduce cross-market noise and improve interpretability.
 
