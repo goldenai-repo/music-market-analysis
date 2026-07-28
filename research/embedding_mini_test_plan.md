@@ -3,6 +3,12 @@
 ## Purpose
 This note outlines a small test for evaluating whether embedding-based similarity can support lyric/title theme classification.
 
+## Updated Role in the Project
+
+This mini test serves as a method-validation step.
+
+The final assigned theme labels will be used in the theme–engagement analysis.
+
 ## Test Idea
 Use a small subset of Turkish YouTube songs to compare titles or lyric excerpts with predefined theme labels using embedding similarity.
 

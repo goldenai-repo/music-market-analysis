@@ -2,7 +2,7 @@
 
 ## 1. Research Question
 
-How do song titles and lyric content relate to engagement performance for released / online-generated songs in non-mainstream language markets?
+How do song titles and lyric theme relate to engagement performance for released / online-generated songs in non-mainstream language markets?
 
 This analysis explores whether title style, title keywords, lyric themes, and emotional tone may help explain why some non-mainstream language songs perform better than others.
 
@@ -25,6 +25,8 @@ Current YouTube/iTunes/Spotify data can help test the framework, but the final a
 Build a content tagging framework to turn title and lyric features into structured variables.
 
 If full lyrics are not available at first, the demo can start with title/content positioning and later expand to lyric-level analysis once lyrics are collected.
+
+Embedding can be used to support lyric-theme classification. The resulting theme labels will be used in the engagement analysis, while similarity scores are primarily used to evaluate the embedding method.
 
 **Framework:**
 
@@ -93,6 +95,6 @@ For the Turkish YouTube sample, engagement metrics may also be influenced by cha
 
 This analysis can be extended from manual tagging to NLP-based text information extraction.
 
-For actual released / online-generated songs, titles and lyrics can be classified into broader content categories, such as romance, hometown/nostalgia, and local food/culture. These categories can then be compared with engagement metrics.
+For actual released / online-generated songs, titles and lyrics can be classified into broader content categories using embedding-assisted theme classification together with manual review. The final assigned theme labels can then be compared with engagement metrics.
 
 Turkish can be used as the first market-level case study. The current Turkish demo songs only test the hometown/nostalgia category and are used to validate the tagging framework; the actual analysis should focus on released / online-generated songs with observable engagement data.
