@@ -246,28 +246,5 @@ pytest
 pytest tests/test_fetch.py::test_function_name
 ```
 
----
 
-## Typical Workflows
-
-### Turkish music pipeline (end to end)
-
-```
-1. collect_turkish_youtube_samples.py   → raw candidates
-2. clean_turkish_youtube_samples.py     → flagged sample for review
-   [manual review step]
-3. collect_transcripts.py               → raw transcripts
-4. prepare_transcript_review.py         → review-ready CSV
-   [manual annotation step]
-5. prepare_analysis_ready.py            → filtered analysis input
-6. lyric_level_embedding.py             → theme similarity scores
-```
-
-### Artist-song search pipeline
-
-```
-1. search_turkish_artist_songs.py       → candidate videos from seed list
-   [manual review of candidates]
-2. collect_transcripts.py --input <reviewed_candidates>
-3. prepare_transcript_review.py → prepare_analysis_ready.py → lyric_level_embedding.py
-```
+See [workflows.md](workflows.md) for step-by-step guides covering common end-to-end scenarios.
