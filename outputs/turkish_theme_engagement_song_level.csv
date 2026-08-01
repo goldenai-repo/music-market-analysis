@@ -1,0 +1,9 @@
+video_id,artist_name,song_title,predicted_theme,view_count,like_count,comment_count,like_rate,comment_rate,score_margin,transcript_quality,channel_type
+Eg6gKLXA30U,Sezen Aksu,Tükeneceğiz,Healing / relaxing,136789383,398577,21555,0.0029138,0.00015758,0.0011,usable_with_noise,official artist
+aXLj7rM6UQQ,Neşet Ertaş,Gönül Dağı,Healing / relaxing,34848109,138619,6004,0.00397781,0.00017229,0.03,usable_with_noise,official label
+NBy3GXENQYU,Müslüm Gürses,Vay Canım Vay,Healing / relaxing,3394430,18628,947,0.00548781,0.00027899,0.0061,usable_with_noise,fan / archive
+IDivHyd3Ks4,Selda Bağcan,İnce İnce Bir Kar Yağar,Healing / relaxing,248355,1613,37,0.00649474,0.00014898,0.0138,usable_with_noise,official artist
+zd8IFDgQCUc,Barış Manço,Gülpembe,Hometown / nostalgia,99321205,457643,27006,0.00460771,0.00027191,0.0032,usable_with_noise,official label
+NudUovOABjQ,Mustafa Ceceli,Gül Rengi,Romance / heartbreak,224551994,723564,30124,0.00322226,0.00013415,0.0074,good,official label
+tuAYyDO5fEs,Mustafa Ceceli,Sultanım,Romance / heartbreak,162325074,521173,27491,0.00321067,0.00016936,0.0007,good,official label
+VNZuTrvXfPE,İbrahim Tatlıses,Aramam,Romance / heartbreak,139005517,704517,23946,0.00506827,0.00017227,0.0018,good,official label
